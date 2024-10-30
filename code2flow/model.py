@@ -31,14 +31,21 @@ def is_installed(executable_cmd):
     """
     Determine whether a command can be run or not
 
-    :param list[str] individual_files:
-    :rtype: str
+    :param str executable_cmd: Name of the executable to check.
+    :rtype: bool
     """
+    # Check in the system PATH
     for path in os.environ["PATH"].split(os.pathsep):
         path = path.strip('"')
         exe_file = os.path.join(path, executable_cmd)
         if os.path.isfile(exe_file) and os.access(exe_file, os.X_OK):
             return True
+
+    # Check in the local graphviz/bin directory
+    local_path = os.path.join(os.path.dirname(__file__), "graphviz", "bin", executable_cmd)
+    if os.path.isfile(local_path) and os.access(local_path, os.X_OK):
+        return True
+
     return False
 
 

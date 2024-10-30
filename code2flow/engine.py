@@ -14,7 +14,7 @@ from .php import PHP
 from .model import (TRUNK_COLOR, LEAF_COLOR, NODE_COLOR, GROUP_TYPE, OWNER_CONST,
                     Edge, Group, Node, Variable, is_installed, flatten)
 
-VERSION = '2.5.1'
+VERSION = '1.0.0'
 
 IMAGE_EXTENSIONS = ('png', 'svg')
 TEXT_EXTENSIONS = ('dot', 'gv', 'json')
@@ -645,7 +645,18 @@ def _generate_graphviz(output_file, extension, final_img_filename):
     """
     start_time = time.time()
     logging.info("Running graphviz to make the image...")
-    command = ["dot", "-T" + extension, output_file]
+    
+    # Define the paths to the dot executables
+    dot_executable = os.path.join(os.path.dirname(__file__), "graphviz", "bin", "dot")
+    dot_executable_exe = os.path.join(os.path.dirname(__file__), "graphviz", "bin", "dot.exe")
+    
+    # Check if either dot or dot.exe exists
+    if os.path.isfile(dot_executable_exe):
+        dot_executable = dot_executable_exe
+    elif not os.path.isfile(dot_executable):
+        raise FileNotFoundError(f"Graphviz executable not found at {dot_executable} or {dot_executable_exe}")
+
+    command = [dot_executable, "-T" + extension, output_file]
     with open(final_img_filename, 'w') as f:
         try:
             subprocess.run(command, stdout=f, check=True)
