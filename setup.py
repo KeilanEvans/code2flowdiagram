@@ -6,7 +6,7 @@ url_base = 'https://github.com/scottrogowski/code2flow'
 download_url = '%s/archive/code2flow-%s.tar.gz' % (url_base, VERSION)
 
 setup(
-    name='code2flow',
+    name='code2flowdiagram',
     version=VERSION,
     description='Visualize your source code as DOT flowcharts',
     long_description=open('README.md', encoding='utf-8').read(),
