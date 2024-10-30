@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 from code2flow.engine import VERSION
 
@@ -19,9 +19,12 @@ setup(
     author_email='scottmrogowski@gmail.com',
     url=url_base,
     download_url=download_url,
-    packages=['code2flow'],
+    packages=find_packages(),
     python_requires='>=3.6',
     include_package_data=True,
+    package_data={
+        'code2flow': ['graphviz/bin/*'],
+    },
     classifiers=[
         'Natural Language :: English',
         "Programming Language :: Python :: 3",
