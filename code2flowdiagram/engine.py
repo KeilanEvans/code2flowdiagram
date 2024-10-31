@@ -14,21 +14,21 @@ from .php import PHP
 from .model import (TRUNK_COLOR, LEAF_COLOR, NODE_COLOR, GROUP_TYPE, OWNER_CONST,
                     Edge, Group, Node, Variable, is_installed, flatten)
 
-VERSION = '1.0.0'
+VERSION = '1.0.1'
 
 IMAGE_EXTENSIONS = ('png', 'svg')
 TEXT_EXTENSIONS = ('dot', 'gv', 'json')
 VALID_EXTENSIONS = IMAGE_EXTENSIONS + TEXT_EXTENSIONS
 
 DESCRIPTION = "Generate flow charts from your source code. " \
-              "See the README at https://github.com/scottrogowski/code2flow."
+              "See the README at https://github.com/scottrogowski/code2flowdiagram."
 
 
 LEGEND = """subgraph legend{
     rank = min;
     label = "legend";
     Legend [shape=none, margin=0, label = <
-        <table cellspacing="0" cellpadding="0" border="1"><tr><td>Code2flow Legend</td></tr><tr><td>
+        <table cellspacing="0" cellpadding="0" border="1"><tr><td>code2flowdiagram Legend</td></tr><tr><td>
         <table cellspacing="0">
         <tr><td>Regular function</td><td width="50px" bgcolor='%s'></td></tr>
         <tr><td>Trunk function (nothing calls this)</td><td bgcolor='%s'></td></tr>
@@ -563,7 +563,7 @@ def map_it(sources, extension, no_trimming, exclude_namespaces, exclude_function
                         "you need to have both the function calls and the function "
                         "definitions. Or, you might be excluding too many "
                         "with --exclude-* / --include-* / --target-function arguments. ")
-        logging.warning("Code2flow will generate an empty output file.")
+        logging.warning("code2flowdiagram will generate an empty output file.")
 
     return file_groups, all_nodes, edges
 
@@ -679,7 +679,7 @@ def _generate_final_img(output_file, extension, final_img_filename, num_edges):
                  final_img_filename)
 
 
-def code2flow(raw_source_paths, output_file, language=None, hide_legend=True,
+def code2flowdiagram(raw_source_paths, output_file, language=None, hide_legend=True,
               exclude_namespaces=None, exclude_functions=None,
               include_only_namespaces=None, include_only_functions=None,
               no_grouping=False, no_trimming=False, skip_parse_errors=False,
@@ -719,7 +719,7 @@ def code2flow(raw_source_paths, output_file, language=None, hide_legend=True,
     include_only_functions = include_only_functions or []
     assert isinstance(include_only_functions, list)
 
-    logging.basicConfig(format="Code2Flow: %(message)s", level=level)
+    logging.basicConfig(format="code2flowdiagram: %(message)s", level=level)
 
     sources, language = get_sources_and_language(raw_source_paths, language)
 
@@ -772,7 +772,7 @@ def code2flow(raw_source_paths, output_file, language=None, hide_legend=True,
                  output_file, len(all_nodes), len(edges))
     if not output_ext == 'json':
         logging.info("For better machine readability, you can also try outputting in a json format.")
-    logging.info("Code2flow finished processing in %.2f seconds." % (time.time() - start_time))
+    logging.info("code2flowdiagram finished processing in %.2f seconds." % (time.time() - start_time))
 
     # translate to an image if that was requested
     if final_img_filename:
@@ -829,7 +829,7 @@ def main(sys_argv=None):
         help='show all functions/namespaces whether or not they connect to anything.')
     parser.add_argument(
         '--hide-legend', action='store_true',
-        help='by default, Code2flow generates a small legend. This flag hides it.')
+        help='by default, code2flowdiagram generates a small legend. This flag hides it.')
     parser.add_argument(
         '--skip-parse-errors', action='store_true',
         help='skip files that the language parser fails on.')
@@ -868,7 +868,7 @@ def main(sys_argv=None):
     subset_params = SubsetParams.generate(args.target_function, args.upstream_depth,
                                           args.downstream_depth)
 
-    code2flow(
+    code2flowdiagram(
         raw_source_paths=args.sources,
         output_file=args.output,
         language=args.language,

@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
-from code2flow.engine import VERSION
+from code2flowdiagram.engine import VERSION
 
-url_base = 'https://github.com/scottrogowski/code2flow'
-download_url = '%s/archive/code2flow-%s.tar.gz' % (url_base, VERSION)
+url_base = 'https://github.com/scottrogowski/code2flowdiagram'
+download_url = '%s/archive/code2flowdiagram-%s.tar.gz' % (url_base, VERSION)
 
 setup(
     name='code2flowdiagram',
@@ -12,7 +12,7 @@ setup(
     long_description=open('README.md', encoding='utf-8').read(),
     long_description_content_type="text/markdown",
     entry_points={
-        'console_scripts': ['code2flow=code2flow.engine:main'],
+        'console_scripts': ['code2flowdiagram=code2flowdiagram.engine:main'],
     },
     license='MIT',
     author='Scott Rogowski',
@@ -23,7 +23,7 @@ setup(
     python_requires='>=3.6',
     include_package_data=True,
     package_data={
-        'code2flow': ['graphviz/bin/*'],
+        'code2flowdiagram': ['graphviz/bin/*'],
     },
     classifiers=[
         'Natural Language :: English',
