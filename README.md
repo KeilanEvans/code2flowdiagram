@@ -35,8 +35,6 @@ code2flowdiagram provides a _pretty good estimate_ of your project's structure. 
 
 _(Below: code2flowdiagram running against a subset of itself `code2flowdiagram code2flowdiagram/engine.py code2flowdiagram/python.py --target-function=code2flowdiagram --downstream-depth=3`)_
 
-![code2flowdiagram running against a subset of itself](https://raw.githubusercontent.com/scottrogowski/code2flowdiagram/master/assets/code2flowdiagram_output.png)
-
 ## Installation
 
 ```bash
@@ -168,20 +166,6 @@ code2flowdiagram is licensed under the MIT license.
 Prior to the rewrite in April 2021, code2flowdiagram was licensed under LGPL. The last commit under that license was 24b2cb854c6a872ba6e17409fbddb6659bf64d4c.
 The April 2021 rewrite was substantial, so it's probably reasonable to treat code2flowdiagram as completely MIT-licensed.
 
-## Acknowledgements
-
-- In mid 2021, code2flowdiagram was rewritten, and two new languages were added. This was prompted and financially supported by the [Sider Corporation](https://siderlabs.com/).
-- The code2flowdiagram pip name was graciously transferred to this project from [Dheeraj Nair](https://github.com/Dheeraj1998). He was using it for his own (unrelated) [code2flowdiagram](https://github.com/Dheeraj1998/code2flowdiagram) project.
-- Many others have contributed through bug fixes, cleanups, and identifying issues. Thank you!!!
-
-## Unrelated projects
-
-The name, "code2flowdiagram", has been used for several unrelated projects. Specifically, the domain, code2flowdiagram.com, has no association with this project. I've never heard anything from them and it doesn't appear like they use anything from here.
-
 ## Feedback / Issues / Contact
 
-If you have an issue using code2flowdiagram or a feature request, please post it in the issues tab. In general, I don't provide help over email. Answering a question publicly helps way more people. For everything else, please do email! scottmrogowski@gmail.com
-
-## Feature Requests
-
-Email me. Usually, I'm spread thin across a lot of projects, so I will, unfortunately, turn down most requests. However, I am open to paid development for compelling features.
+If you have an issue using code2flowdiagram or a feature request, please post it in the issues tab.

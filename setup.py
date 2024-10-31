@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 from code2flowdiagram.engine import VERSION
 
-url_base = 'https://github.com/scottrogowski/code2flowdiagram'
-download_url = '%s/archive/code2flowdiagram-%s.tar.gz' % (url_base, VERSION)
+url_base = 'https://github.com/KeilanEvans/code2flowdiagram'
+download_url = f'{url_base}/releases'
 
 setup(
     name='code2flowdiagram',
@@ -15,8 +15,7 @@ setup(
         'console_scripts': ['code2flowdiagram=code2flowdiagram.engine:main'],
     },
     license='MIT',
-    author='Scott Rogowski',
-    author_email='scottmrogowski@gmail.com',
+    author='Keilan Evans',
     url=url_base,
     download_url=download_url,
     packages=find_packages(),
